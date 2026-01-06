@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         serif: ['Noto Serif JP', 'serif'],
         sans: ['Inter', 'sans-serif'],
+        grotesk: ['Space Grotesk', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
