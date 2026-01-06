@@ -1,4 +1,5 @@
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
+import WireframeSphere from './WireframeSphere';
 
 const Hero = () => {
   return (
@@ -94,42 +95,13 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right: Large Decorative Graphic - Like Robb's illustration */}
+          {/* Right: 3D Wireframe Network Sphere */}
           <div 
             className="hidden lg:flex items-center justify-center opacity-0 animate-fade-in"
             style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
           >
             <div className="relative w-[400px] h-[400px]">
-              {/* Diagonal pattern background circle */}
-              <div 
-                className="absolute inset-0 rounded-full opacity-10"
-                style={{
-                  backgroundImage: `repeating-linear-gradient(
-                    -45deg,
-                    transparent,
-                    transparent 8px,
-                    hsl(var(--zen-neon)) 8px,
-                    hsl(var(--zen-neon)) 9px
-                  )`
-                }}
-              />
-              
-              {/* Main decorative circle */}
-              <div className="absolute inset-4 rounded-full border-2 border-primary/40 bg-primary/5" />
-              <div className="absolute inset-12 rounded-full border border-zen-neon/30" />
-              
-              {/* Center kanji - prominent like Robb's face */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[180px] font-serif text-foreground/15 select-none leading-none">
-                道
-              </div>
-              
-              {/* Accent elements */}
-              <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-zen-neon/50" />
-              <div className="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-primary/50" />
-              
-              {/* Small decorative dots */}
-              <div className="absolute top-1/4 right-0 w-3 h-3 rounded-full bg-zen-neon/60" />
-              <div className="absolute bottom-1/4 left-0 w-3 h-3 rounded-full bg-primary/60" />
+              <WireframeSphere />
             </div>
           </div>
         </div>
