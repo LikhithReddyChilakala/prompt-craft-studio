@@ -36,14 +36,14 @@ const Hero = () => {
               className="opacity-0 animate-fade-in"
               style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
             >
-              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-serif font-bold text-foreground leading-[1.1] mb-1">
+              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-serif font-bold text-foreground leading-[1.1] mb-1">
                 Hi,{' '}
-                <span className="text-primary relative inline-block whitespace-nowrap">
+                <span className="text-primary relative inline-block">
                   Likhith Reddy Chilakala
                   <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-zen-neon" />
                 </span>
               </span>
-              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-serif font-bold text-foreground leading-[1.1]">
+              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-serif font-bold text-foreground leading-[1.1]">
                 here<span className="text-zen-neon">.</span>
               </span>
             </h1>
