@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Github, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -7,7 +7,7 @@ const timelineProjects = [
     title: 'Tic Tac Toe',
     description: 'Classic game with clean code practices and winner detection algorithms.',
     tags: ['Java', 'OOP', 'Game Logic'],
-    position: 0, // Bottom - oldest
+    position: 0,
   },
   {
     title: 'Parking Lot System',
@@ -31,7 +31,7 @@ const timelineProjects = [
     title: 'Splitwise Clone',
     description: 'Expense splitting with equal/unequal splits and balance calculations.',
     tags: ['Java', 'OOP', 'Algorithms'],
-    position: 4, // Top - newest
+    position: 4,
   },
 ];
 
@@ -42,31 +42,96 @@ const featuredProject = {
   company: 'Tata Elxsi',
 };
 
-// Get color based on position (0 = bottom/red, 4 = top/green)
+// All projects combined for display (timeline + featured)
+const allProjects = [
+  ...timelineProjects,
+  { ...featuredProject, position: 5, isFeatured: true },
+];
+
 const getNodeColor = (position: number) => {
   const colors = [
-    { border: '#FF4500', glow: 'rgba(255, 69, 0, 0.6)' },      // Red
-    { border: '#FF6B00', glow: 'rgba(255, 107, 0, 0.6)' },     // Orange-Red
-    { border: '#FF8C00', glow: 'rgba(255, 140, 0, 0.6)' },     // Orange
-    { border: '#FFD700', glow: 'rgba(255, 215, 0, 0.6)' },     // Gold
-    { border: '#39FF14', glow: 'rgba(57, 255, 20, 0.6)' },     // Neon Green
+    { border: '#FF4500', glow: 'rgba(255, 69, 0, 0.6)' },
+    { border: '#FF6B00', glow: 'rgba(255, 107, 0, 0.6)' },
+    { border: '#FF8C00', glow: 'rgba(255, 140, 0, 0.6)' },
+    { border: '#FFD700', glow: 'rgba(255, 215, 0, 0.6)' },
+    { border: '#39FF14', glow: 'rgba(57, 255, 20, 0.6)' },
   ];
-  return colors[position];
+  return colors[position] || colors[4];
 };
 
 const Projects = () => {
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // Auto-cycle through projects
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setActiveIndex((prev) => (prev + 1) % allProjects.length);
+        setIsTransitioning(false);
+      }, 300);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const handleNodeHover = useCallback((index: number) => {
+    setIsPaused(true);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveIndex(index);
+      setIsTransitioning(false);
+    }, 150);
+  }, []);
+
+  const handleNodeLeave = useCallback(() => {
+    setIsPaused(false);
+  }, []);
+
+  const handleFeaturedHover = useCallback(() => {
+    setIsPaused(true);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveIndex(5); // Featured project index
+      setIsTransitioning(false);
+    }, 150);
+  }, []);
+
+  const currentProject = allProjects[activeIndex];
+  const isFeaturedActive = activeIndex === 5;
 
   return (
     <section id="projects" className="py-20 md:py-32 bg-[#121212] relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[400px] font-serif text-foreground select-none">
-          作
+      {/* Cinema Screen Background */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-0">
+        {/* Static Hint */}
+        <p className="text-muted-foreground/40 text-sm tracking-widest uppercase mb-8">
+          Hover on nodes to explore
+        </p>
+        
+        {/* Dynamic Project Title */}
+        <div className="relative h-32 flex items-center justify-center overflow-hidden">
+          <h2
+            className={`text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-center transition-all duration-300 ${
+              isTransitioning ? 'opacity-0 scale-95' : 'opacity-20 scale-100'
+            }`}
+            style={{
+              color: isFeaturedActive ? '#FFA500' : getNodeColor(activeIndex).border,
+              textShadow: isFeaturedActive 
+                ? '0 0 60px rgba(255, 165, 0, 0.3)' 
+                : `0 0 60px ${getNodeColor(activeIndex).glow}`,
+            }}
+          >
+            {currentProject.title}
+          </h2>
         </div>
       </div>
 
-      <div className="container mx-auto px-6 relative">
+      <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="text-xs tracking-widest uppercase text-primary mb-4 block">
@@ -106,7 +171,6 @@ const Projects = () => {
                   </feMerge>
                 </filter>
               </defs>
-              {/* Main diagonal line */}
               <line 
                 x1="10%" 
                 y1="90%" 
@@ -117,7 +181,6 @@ const Projects = () => {
                 filter="url(#glow)"
                 strokeLinecap="round"
               />
-              {/* Subtle glow line behind */}
               <line 
                 x1="10%" 
                 y1="90%" 
@@ -133,10 +196,10 @@ const Projects = () => {
             {/* Project Nodes */}
             {timelineProjects.map((project, index) => {
               const nodeColor = getNodeColor(project.position);
-              // Calculate position along diagonal (bottom-left to top-right)
               const progress = project.position / (timelineProjects.length - 1);
-              const left = 10 + progress * 80; // 10% to 90%
-              const top = 90 - progress * 80;  // 90% to 10%
+              const left = 10 + progress * 80;
+              const top = 90 - progress * 80;
+              const isActive = activeIndex === index;
               
               return (
                 <div
@@ -146,50 +209,21 @@ const Projects = () => {
                     left: `${left}%`, 
                     top: `${top}%`,
                   }}
-                  onMouseEnter={() => setHoveredProject(index)}
-                  onMouseLeave={() => setHoveredProject(null)}
+                  onMouseEnter={() => handleNodeHover(index)}
+                  onMouseLeave={handleNodeLeave}
                 >
                   {/* Glowing Node */}
                   <div
                     className="w-5 h-5 rounded-full bg-background border-2 transition-all duration-300"
                     style={{
                       borderColor: nodeColor.border,
-                      boxShadow: hoveredProject === index 
-                        ? `0 0 20px ${nodeColor.glow}, 0 0 40px ${nodeColor.glow}`
+                      boxShadow: isActive 
+                        ? `0 0 25px ${nodeColor.glow}, 0 0 50px ${nodeColor.glow}, 0 0 75px ${nodeColor.glow}`
                         : `0 0 10px ${nodeColor.glow}`,
-                      transform: hoveredProject === index ? 'scale(1.5)' : 'scale(1)',
+                      transform: isActive ? 'scale(1.8)' : 'scale(1)',
+                      backgroundColor: isActive ? nodeColor.border : 'var(--background)',
                     }}
                   />
-                  
-                  {/* Tooltip Card */}
-                  <div
-                    className={`absolute left-8 top-1/2 -translate-y-1/2 w-56 p-4 bg-card/95 backdrop-blur-sm border rounded-lg transition-all duration-300 ${
-                      hoveredProject === index 
-                        ? 'opacity-100 translate-x-0 pointer-events-auto' 
-                        : 'opacity-0 -translate-x-4 pointer-events-none'
-                    }`}
-                    style={{
-                      borderColor: nodeColor.border,
-                      boxShadow: `0 0 20px ${nodeColor.glow}`,
-                    }}
-                  >
-                    <h4 className="font-serif font-bold text-foreground mb-2">{project.title}</h4>
-                    <p className="text-xs text-muted-foreground mb-3 line-clamp-2">{project.description}</p>
-                    <div className="flex flex-wrap gap-1">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2 py-0.5 text-[10px] font-medium rounded"
-                          style={{ 
-                            backgroundColor: `${nodeColor.border}20`,
-                            color: nodeColor.border,
-                          }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
                 </div>
               );
             })}
@@ -203,44 +237,70 @@ const Projects = () => {
             </div>
           </div>
 
-          {/* Right Column - Featured Showcase Portal */}
+          {/* Right Column - Featured Triangle Showcase */}
           <div className="flex items-center justify-center relative">
-            {/* The Hexagonal Portal */}
-            <div className="relative">
-              {/* Outer Glow Ring */}
+            <div 
+              className="relative cursor-pointer group"
+              onMouseEnter={handleFeaturedHover}
+              onMouseLeave={handleNodeLeave}
+            >
+              {/* Outer Glow */}
               <div 
-                className="absolute inset-0 rounded-full animate-pulse"
+                className={`absolute inset-0 transition-all duration-500 ${isFeaturedActive ? 'opacity-100' : 'opacity-60'}`}
                 style={{
-                  background: 'radial-gradient(circle, rgba(57, 255, 20, 0.3) 0%, transparent 70%)',
-                  transform: 'scale(1.5)',
+                  clipPath: 'polygon(50% 0%, 100% 100%, 0% 100%)',
+                  background: 'radial-gradient(circle at 50% 70%, rgba(255, 165, 0, 0.4) 0%, transparent 70%)',
+                  transform: 'scale(1.3)',
+                  filter: 'blur(20px)',
                 }}
               />
               
-              {/* Main Portal Circle */}
+              {/* Main Triangle */}
               <div
-                className="relative w-64 h-64 md:w-80 md:h-80 rounded-full flex flex-col items-center justify-center text-center p-8 border-2"
+                className={`relative w-64 h-56 md:w-80 md:h-72 flex flex-col items-center justify-center text-center p-8 transition-all duration-500 ${
+                  isFeaturedActive ? 'scale-105' : 'scale-100'
+                }`}
                 style={{
-                  borderColor: '#39FF14',
-                  background: 'radial-gradient(circle at center, rgba(57, 255, 20, 0.1) 0%, rgba(18, 18, 18, 0.95) 70%)',
-                  boxShadow: `
-                    0 0 30px rgba(57, 255, 20, 0.4),
-                    0 0 60px rgba(57, 255, 20, 0.2),
-                    0 0 100px rgba(57, 255, 20, 0.1),
-                    inset 0 0 30px rgba(57, 255, 20, 0.1)
-                  `,
+                  clipPath: 'polygon(50% 0%, 100% 100%, 0% 100%)',
+                  background: `linear-gradient(180deg, rgba(255, 165, 0, 0.15) 0%, rgba(255, 215, 0, 0.1) 50%, rgba(18, 18, 18, 0.95) 100%)`,
+                  boxShadow: isFeaturedActive
+                    ? `0 0 40px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 215, 0, 0.3)`
+                    : `0 0 20px rgba(255, 165, 0, 0.3)`,
                 }}
               >
-                {/* Inner Ring */}
-                <div 
-                  className="absolute inset-4 rounded-full border opacity-40"
-                  style={{ borderColor: '#39FF14' }}
-                />
+                {/* Triangle Border */}
+                <svg 
+                  className="absolute inset-0 w-full h-full pointer-events-none"
+                  viewBox="0 0 100 87"
+                  preserveAspectRatio="none"
+                >
+                  <defs>
+                    <linearGradient id="triangleGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#FFA500" />
+                      <stop offset="100%" stopColor="#FFD700" />
+                    </linearGradient>
+                    <filter id="triangleGlow">
+                      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+                      <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
+                  </defs>
+                  <polygon 
+                    points="50,0 100,87 0,87" 
+                    fill="none" 
+                    stroke="url(#triangleGradient)" 
+                    strokeWidth="1.5"
+                    filter="url(#triangleGlow)"
+                  />
+                </svg>
                 
                 {/* Company Badge */}
                 <div 
-                  className="absolute -top-3 px-4 py-1 rounded-full text-xs font-medium tracking-wider uppercase"
+                  className="absolute top-8 px-3 py-1 rounded-full text-[10px] font-medium tracking-wider uppercase"
                   style={{
-                    backgroundColor: '#39FF14',
+                    background: 'linear-gradient(135deg, #FFA500, #FFD700)',
                     color: '#121212',
                   }}
                 >
@@ -248,52 +308,76 @@ const Projects = () => {
                   {featuredProject.company}
                 </div>
                 
-                {/* Content */}
-                <h3 className="font-serif font-bold text-lg md:text-xl text-foreground mb-3 leading-tight">
+                {/* Content - Title Only */}
+                <h3 
+                  className="font-serif font-bold text-base md:text-lg text-foreground leading-tight mt-8 px-4"
+                  style={{
+                    textShadow: isFeaturedActive ? '0 0 20px rgba(255, 165, 0, 0.5)' : 'none',
+                  }}
+                >
                   {featuredProject.title}
                 </h3>
-                <p className="text-xs text-muted-foreground mb-4 line-clamp-3 px-2">
-                  {featuredProject.description}
-                </p>
-                
-                {/* Tags */}
-                <div className="flex flex-wrap justify-center gap-1">
-                  {featuredProject.tags.slice(0, 3).map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 text-[10px] font-medium rounded-full"
-                      style={{
-                        backgroundColor: 'rgba(57, 255, 20, 0.2)',
-                        color: '#39FF14',
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </div>
 
-              {/* Connecting Arrow from Timeline */}
-              <svg
-                className="absolute -left-16 top-1/2 -translate-y-1/2 w-16 h-8 hidden lg:block"
-                viewBox="0 0 64 32"
+              {/* Pulsing Animation Ring */}
+              <div 
+                className={`absolute inset-0 pointer-events-none transition-opacity duration-300 ${isFeaturedActive ? 'opacity-100' : 'opacity-50'}`}
+                style={{
+                  clipPath: 'polygon(50% 0%, 100% 100%, 0% 100%)',
+                  animation: 'pulse 2s ease-in-out infinite',
+                }}
               >
-                <defs>
-                  <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#FFD700" />
-                    <stop offset="100%" stopColor="#39FF14" />
-                  </linearGradient>
-                </defs>
-                <path
-                  d="M0 16 L48 16 M40 8 L48 16 L40 24"
-                  stroke="url(#arrowGradient)"
-                  strokeWidth="2"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  opacity="0.6"
+                <div 
+                  className="w-full h-full"
+                  style={{
+                    background: 'linear-gradient(180deg, rgba(255, 165, 0, 0.1) 0%, transparent 50%)',
+                  }}
                 />
-              </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Detail Display Area - Shows when hovering */}
+        <div 
+          className={`mt-12 max-w-2xl mx-auto text-center transition-all duration-300 ${
+            isPaused ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+          }`}
+        >
+          <div 
+            className="p-6 rounded-lg border backdrop-blur-sm"
+            style={{
+              borderColor: isFeaturedActive ? '#FFA500' : getNodeColor(activeIndex).border,
+              backgroundColor: 'rgba(18, 18, 18, 0.9)',
+              boxShadow: isFeaturedActive 
+                ? '0 0 30px rgba(255, 165, 0, 0.2)' 
+                : `0 0 30px ${getNodeColor(activeIndex).glow}`,
+            }}
+          >
+            <h3 
+              className="font-serif font-bold text-2xl mb-3"
+              style={{ color: isFeaturedActive ? '#FFA500' : getNodeColor(activeIndex).border }}
+            >
+              {currentProject.title}
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              {currentProject.description}
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {currentProject.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 text-xs font-medium rounded-full"
+                  style={{
+                    backgroundColor: isFeaturedActive 
+                      ? 'rgba(255, 165, 0, 0.2)' 
+                      : `${getNodeColor(activeIndex).border}20`,
+                    color: isFeaturedActive ? '#FFA500' : getNodeColor(activeIndex).border,
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
         </div>
