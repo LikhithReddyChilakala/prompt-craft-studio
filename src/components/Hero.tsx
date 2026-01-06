@@ -1,5 +1,5 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
-import SpectralWaveform from './SpectralWaveform';
+import developerSketch from '@/assets/developer-sketch.png';
 
 const Hero = () => {
   return (
@@ -95,12 +95,61 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right: Spectral Waveform Visualization */}
+          {/* Right: Developer Sketch with Spectrum Radiance */}
           <div 
             className="hidden lg:flex items-center justify-center opacity-0 animate-fade-in"
             style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
           >
-            <SpectralWaveform />
+            <div className="relative w-[400px] h-[400px] animate-float">
+              {/* Spectrum glow layers - animated background halos */}
+              <div 
+                className="absolute inset-0 rounded-full animate-spectrum-pulse"
+                style={{
+                  background: 'radial-gradient(ellipse at center, rgba(57, 255, 20, 0.4) 0%, transparent 60%)',
+                  filter: 'blur(40px)',
+                  animation: 'spectrum-pulse 3s ease-in-out infinite, spectrum-rotate 8s linear infinite',
+                }}
+              />
+              <div 
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: 'radial-gradient(ellipse at 30% 40%, rgba(0, 255, 255, 0.35) 0%, transparent 50%)',
+                  filter: 'blur(35px)',
+                  animation: 'spectrum-pulse 3s ease-in-out infinite 0.5s, spectrum-rotate 10s linear infinite reverse',
+                }}
+              />
+              <div 
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: 'radial-gradient(ellipse at 70% 60%, rgba(255, 20, 147, 0.35) 0%, transparent 50%)',
+                  filter: 'blur(35px)',
+                  animation: 'spectrum-pulse 3s ease-in-out infinite 1s, spectrum-rotate 12s linear infinite',
+                }}
+              />
+              <div 
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: 'radial-gradient(ellipse at 50% 30%, rgba(255, 255, 0, 0.3) 0%, transparent 45%)',
+                  filter: 'blur(30px)',
+                  animation: 'spectrum-pulse 3s ease-in-out infinite 1.5s, spectrum-rotate 9s linear infinite reverse',
+                }}
+              />
+              
+              {/* The sketch image with multi-color drop shadows */}
+              <img 
+                src={developerSketch} 
+                alt="Developer illustration - stylized sketch of a developer with laptop"
+                className="relative z-10 w-full h-full object-contain"
+                style={{
+                  filter: `
+                    drop-shadow(0 0 15px rgba(57, 255, 20, 0.6))
+                    drop-shadow(0 0 30px rgba(0, 255, 255, 0.4))
+                    drop-shadow(0 0 45px rgba(255, 20, 147, 0.3))
+                    drop-shadow(0 0 60px rgba(255, 255, 0, 0.2))
+                  `,
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
