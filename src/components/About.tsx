@@ -74,12 +74,12 @@ const About = () => {
 
             {/* Values Grid */}
             <div className="grid grid-cols-2 gap-4 mt-10">
-              {values.map((value) => (
+              {values.map((value, index) => (
                 <div
                   key={value.title}
-                  className="p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors group"
+                  className="p-4 bg-card border border-border rounded-lg hover:border-zen-neon/50 transition-colors group"
                 >
-                  <value.icon className="w-6 h-6 text-primary mb-3 group-hover:scale-110 transition-transform" />
+                  <value.icon className={`w-6 h-6 mb-3 group-hover:scale-110 transition-transform ${index % 2 === 0 ? 'text-primary' : 'text-zen-neon'}`} />
                   <h4 className="font-medium text-foreground text-sm mb-1">{value.title}</h4>
                   <p className="text-xs text-muted-foreground">{value.description}</p>
                 </div>
@@ -102,7 +102,7 @@ const About = () => {
                   </div>
                   <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1000 ease-out"
+                      className="h-full bg-gradient-to-r from-primary via-accent to-zen-neon rounded-full transition-all duration-1000 ease-out"
                       style={{ width: `${skill.level}%` }}
                     />
                   </div>

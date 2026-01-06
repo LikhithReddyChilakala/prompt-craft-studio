@@ -32,10 +32,10 @@ const Contact = () => {
 
               <a
                 href="mailto:likhithreddy2423@gmail.com"
-                className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors group"
+                className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-zen-neon/50 transition-colors group"
               >
-                <div className="p-3 bg-secondary rounded-lg group-hover:bg-primary/10 transition-colors">
-                  <Mail className="w-5 h-5 text-primary" />
+                <div className="p-3 bg-secondary rounded-lg group-hover:bg-zen-neon/10 transition-colors">
+                  <Mail className="w-5 h-5 text-zen-neon" />
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground uppercase tracking-wide">Email</p>
@@ -108,7 +108,7 @@ const Contact = () => {
 
               {/* Japanese Quote */}
               <div className="mt-8 pt-6 border-t border-border text-center">
-                <p className="text-2xl font-serif text-primary mb-2">一期一会</p>
+                <p className="text-2xl font-serif text-zen-neon mb-2">一期一会</p>
                 <p className="text-xs text-muted-foreground italic">
                   "One time, one meeting" — treasure every encounter
                 </p>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import logo from '@/assets/logo.png';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -30,11 +31,13 @@ const Navbar = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2 group">
-            <span className="text-xl md:text-2xl font-serif font-bold text-foreground group-hover:text-primary transition-colors">
-              侍
-            </span>
-            <span className="text-sm md:text-base font-serif tracking-widest text-muted-foreground">
+          <a href="#home" className="flex items-center gap-3 group">
+            <img 
+              src={logo} 
+              alt="LR Logo" 
+              className="h-10 w-10 md:h-12 md:w-12 object-contain"
+            />
+            <span className="text-sm md:text-base font-medium tracking-widest text-muted-foreground group-hover:text-zen-neon transition-colors">
               LIKHITH
             </span>
           </a>

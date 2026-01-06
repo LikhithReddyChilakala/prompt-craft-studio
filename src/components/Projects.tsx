@@ -75,13 +75,15 @@ const Projects = () => {
         {projects.filter(p => p.featured).map((project) => (
           <div
             key={project.title}
-            className="mb-12 p-8 bg-card border border-border rounded-lg hover:border-primary/50 transition-all duration-300 zen-glow max-w-4xl mx-auto"
+            className="mb-12 p-8 bg-card border border-zen-neon/30 rounded-lg hover:border-zen-neon/60 transition-all duration-300 max-w-4xl mx-auto relative overflow-hidden"
+            style={{ boxShadow: '0 0 40px -10px hsl(var(--zen-neon) / 0.2)' }}
           >
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-zen-neon to-accent" />
             <div className="flex items-start justify-between mb-4">
-              <span className="text-xs tracking-widest uppercase text-accent">
+              <span className="text-xs tracking-widest uppercase text-zen-neon">
                 Featured • {project.type}
               </span>
-              <Folder className="w-8 h-8 text-primary" />
+              <Folder className="w-8 h-8 text-zen-neon" />
             </div>
             <h3 className="text-2xl font-serif font-bold text-foreground mb-3">
               {project.title}
@@ -90,10 +92,14 @@ const Projects = () => {
               {project.description}
             </p>
             <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
+              {project.tags.map((tag, index) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 text-xs font-medium bg-secondary text-muted-foreground rounded-full"
+                  className={`px-3 py-1 text-xs font-medium rounded-full ${
+                    index === 0 ? 'bg-primary/20 text-primary' : 
+                    index === 1 ? 'bg-zen-neon/20 text-zen-neon' : 
+                    'bg-secondary text-muted-foreground'
+                  }`}
                 >
                   {tag}
                 </span>
@@ -137,7 +143,7 @@ const Projects = () => {
         <div className="text-center mt-12">
           <Button
             variant="outline"
-            className="border-border text-foreground hover:bg-secondary"
+            className="border-zen-neon/50 text-zen-neon hover:bg-zen-neon/10 hover:border-zen-neon"
             asChild
           >
             <a
