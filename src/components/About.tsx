@@ -38,12 +38,12 @@ const About = () => {
   return (
     <section id="about" className="py-20 md:py-32 relative">
       {/* Background Accent */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-zen-neon/30 to-transparent" />
 
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-xs tracking-widest uppercase text-primary mb-4 block">
+          <span className="text-xs tracking-widest uppercase text-zen-neon font-mono mb-4 block">
             About Me
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground">
@@ -57,13 +57,13 @@ const About = () => {
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
               A stoic-oriented thinker and Java Backend Developer driven by a philosophy 
               where value creation is the ultimate measure of success. With 9 months of 
-              internship experience at <span className="text-foreground font-medium">Tata Elxsi</span>, 
+              internship experience at <span className="text-zen-neon font-medium">Tata Elxsi</span>, 
               I honed my skills in enterprise-level development.
             </p>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
               As a 2024 graduate from <span className="text-foreground font-medium">R.M.K. Engineering College</span>, 
-              I've committed to intensive upskilling at <span className="text-foreground font-medium">Scaler Academy</span> and 
-              <span className="text-foreground font-medium"> BITSoM</span>, mastering DSA, System Design, 
+              I've committed to intensive upskilling at <span className="text-zen-neon font-medium">Scaler Academy</span> and
+              <span className="text-zen-neon font-medium"> BITSoM</span>, mastering DSA, System Design, 
               and Product Management with AI.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -77,9 +77,9 @@ const About = () => {
               {values.map((value) => (
                 <div
                   key={value.title}
-                  className="p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors group"
+                  className="p-4 bg-card border border-border rounded-lg hover:border-zen-neon/50 transition-colors group"
                 >
-                  <value.icon className="w-6 h-6 text-primary mb-3 group-hover:scale-110 transition-transform" />
+                  <value.icon className="w-6 h-6 text-zen-neon mb-3 group-hover:scale-110 transition-transform" />
                   <h4 className="font-medium text-foreground text-sm mb-1">{value.title}</h4>
                   <p className="text-xs text-muted-foreground">{value.description}</p>
                 </div>
@@ -98,11 +98,11 @@ const About = () => {
                 <div key={skill.name}>
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-sm font-medium text-foreground">{skill.name}</span>
-                    <span className="text-xs text-muted-foreground">{skill.level}%</span>
+                    <span className="text-xs text-zen-neon font-mono">{skill.level}%</span>
                   </div>
                   <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1000 ease-out"
+                      className="h-full bg-gradient-to-r from-zen-neon to-zen-neon-glow rounded-full transition-all duration-1000 ease-out"
                       style={{ width: `${skill.level}%` }}
                     />
                   </div>
@@ -116,17 +116,17 @@ const About = () => {
                 Education & Training
               </h3>
               <div className="space-y-4">
-                <div className="pl-4 border-l-2 border-primary">
+                <div className="pl-4 border-l-2 border-zen-neon">
                   <p className="text-sm text-muted-foreground">2025 - Present</p>
                   <h4 className="font-medium text-foreground">BITSoM</h4>
                   <p className="text-sm text-muted-foreground">Product Management with Gen AI</p>
                 </div>
-                <div className="pl-4 border-l-2 border-border hover:border-primary transition-colors">
+                <div className="pl-4 border-l-2 border-border hover:border-zen-neon transition-colors">
                   <p className="text-sm text-muted-foreground">2025 - Present</p>
                   <h4 className="font-medium text-foreground">Scaler Academy</h4>
                   <p className="text-sm text-muted-foreground">DSA, SQL, System Design</p>
                 </div>
-                <div className="pl-4 border-l-2 border-border hover:border-primary transition-colors">
+                <div className="pl-4 border-l-2 border-border hover:border-zen-neon transition-colors">
                   <p className="text-sm text-muted-foreground">2020 - 2024</p>
                   <h4 className="font-medium text-foreground">R.M.K. Engineering College</h4>
                   <p className="text-sm text-muted-foreground">Bachelor's Degree</p>

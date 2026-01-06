@@ -31,7 +31,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2 group">
-            <span className="text-xl md:text-2xl font-serif font-bold text-foreground group-hover:text-primary transition-colors">
+            <span className="text-xl md:text-2xl font-serif font-bold text-zen-neon group-hover:text-foreground transition-colors">
               侍
             </span>
             <span className="text-sm md:text-base font-serif tracking-widest text-muted-foreground">
@@ -45,14 +45,14 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors ink-stroke"
+                className="text-sm font-medium text-muted-foreground hover:text-zen-neon transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-zen-neon after:scale-x-0 after:origin-right after:transition-transform hover:after:scale-x-100 hover:after:origin-left"
               >
                 {link.name}
               </a>
             ))}
             <Button
               size="sm"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="bg-zen-neon hover:bg-zen-neon/90 text-background font-medium"
               asChild
             >
               <a href="#contact">Get in Touch</a>
@@ -61,7 +61,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground p-2"
+            className="md:hidden text-foreground p-2 hover:text-zen-neon transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -80,14 +80,14 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+                className="text-base font-medium text-muted-foreground hover:text-zen-neon transition-colors py-2"
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
               </a>
             ))}
             <Button
-              className="bg-primary hover:bg-primary/90 text-primary-foreground w-full mt-2"
+              className="bg-zen-neon hover:bg-zen-neon/90 text-background font-medium w-full mt-2"
               asChild
             >
               <a href="#contact" onClick={() => setIsOpen(false)}>Get in Touch</a>
