@@ -116,17 +116,20 @@ const About = () => {
                 Education & Training
               </h3>
               <div className="space-y-4">
-                <div className="pl-4 border-l-2 border-primary">
+                <div className="relative pl-4">
+                  <div className="absolute left-0 top-0 bottom-0 w-0.5 rounded-full bg-gradient-to-b from-primary via-accent to-zen-neon" />
                   <p className="text-sm text-muted-foreground">2025 - Present</p>
                   <h4 className="font-medium text-foreground">BITSoM</h4>
                   <p className="text-sm text-muted-foreground">Product Management with Gen AI</p>
                 </div>
-                <div className="pl-4 border-l-2 border-border hover:border-primary transition-colors">
+                <div className="relative pl-4">
+                  <div className="absolute left-0 top-0 bottom-0 w-0.5 rounded-full bg-gradient-to-b from-primary via-accent to-zen-neon" />
                   <p className="text-sm text-muted-foreground">2025 - Present</p>
                   <h4 className="font-medium text-foreground">Scaler Academy</h4>
                   <p className="text-sm text-muted-foreground">DSA, SQL, System Design</p>
                 </div>
-                <div className="pl-4 border-l-2 border-border hover:border-primary transition-colors">
+                <div className="relative pl-4">
+                  <div className="absolute left-0 top-0 bottom-0 w-0.5 rounded-full bg-gradient-to-b from-primary via-accent to-zen-neon" />
                   <p className="text-sm text-muted-foreground">2020 - 2024</p>
                   <h4 className="font-medium text-foreground">R.M.K. Engineering College</h4>
                   <p className="text-sm text-muted-foreground">Bachelor's Degree</p>
