@@ -146,64 +146,92 @@ const Projects = () => {
               </div>
             </div>
 
-            {/* Diagonal Timeline */}
+            {/* Organic Neon Branch Timeline */}
             <svg 
               className="absolute inset-0 w-full h-full pointer-events-none"
+              viewBox="0 0 100 100"
               preserveAspectRatio="none"
             >
               <defs>
-                <linearGradient id="diagonalGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                <linearGradient id="branchGradient" x1="0%" y1="100%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#FF4500" />
                   <stop offset="25%" stopColor="#FF6B00" />
                   <stop offset="50%" stopColor="#FF8C00" />
                   <stop offset="75%" stopColor="#FFD700" />
                   <stop offset="100%" stopColor="#39FF14" />
                 </linearGradient>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <filter id="branchGlow">
+                  <feGaussianBlur stdDeviation="0.8" result="coloredBlur"/>
                   <feMerge>
                     <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="SourceGraphic"/>
                   </feMerge>
                 </filter>
               </defs>
-              <line 
-                x1="15%" 
-                y1="85%" 
-                x2="85%" 
-                y2="15%" 
-                stroke="url(#diagonalGradient)" 
-                strokeWidth="3"
-                filter="url(#glow)"
+              {/* Outer glow layer */}
+              <path 
+                d="M 12 88 
+                   C 18 75, 22 68, 28 60 
+                   S 38 48, 45 42 
+                   S 58 32, 68 25 
+                   S 80 18, 88 12"
+                fill="none"
+                stroke="url(#branchGradient)" 
+                strokeWidth="1.2"
+                opacity="0.3"
                 strokeLinecap="round"
               />
-              <line 
-                x1="15%" 
-                y1="85%" 
-                x2="85%" 
-                y2="15%" 
-                stroke="url(#diagonalGradient)" 
-                strokeWidth="8"
-                opacity="0.3"
+              {/* Main organic branch - thicker at base, tapering to tip */}
+              <path 
+                d="M 12 88 
+                   C 18 75, 22 68, 28 60 
+                   S 38 48, 45 42 
+                   S 58 32, 68 25 
+                   S 80 18, 88 12"
+                fill="none"
+                stroke="url(#branchGradient)" 
+                strokeWidth="0.6"
+                filter="url(#branchGlow)"
+                strokeLinecap="round"
+                style={{ 
+                  strokeDasharray: '0',
+                }}
+              />
+              {/* Secondary thinner branch for taper effect */}
+              <path 
+                d="M 12 88 
+                   C 18 75, 22 68, 28 60"
+                fill="none"
+                stroke="#FF4500" 
+                strokeWidth="0.4"
+                opacity="0.6"
                 strokeLinecap="round"
               />
             </svg>
 
-            {/* Project Nodes */}
+            {/* Project Nodes - positioned along the curved branch */}
             {timelineProjects.map((project, index) => {
               const nodeColor = getNodeColor(project.position);
-              const progress = project.position / (timelineProjects.length - 1);
-              const left = 15 + progress * 70;
-              const top = 85 - progress * 70;
               const isActive = activeIndex === index;
+              
+              // Bezier curve node positions (manually calculated to match the S-curve path)
+              const curvePositions = [
+                { left: 12, top: 88 },   // Node 0 - origin
+                { left: 25, top: 63 },   // Node 1
+                { left: 42, top: 45 },   // Node 2
+                { left: 62, top: 30 },   // Node 3
+                { left: 85, top: 14 },   // Node 4 - present
+              ];
+              
+              const pos = curvePositions[project.position] || { left: 50, top: 50 };
               
               return (
                 <div
                   key={project.title}
                   className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer z-10"
                   style={{ 
-                    left: `${left}%`, 
-                    top: `${top}%`,
+                    left: `${pos.left}%`, 
+                    top: `${pos.top}%`,
                   }}
                   onMouseEnter={() => handleNodeHover(index)}
                   onMouseLeave={handleNodeLeave}
@@ -285,7 +313,7 @@ const Projects = () => {
             </div>
 
             {/* BOTTOM-RIGHT QUADRANT - Tata Elxsi Inverted Triangle */}
-            <div className="flex-1 flex items-start justify-end p-8">
+            <div className="flex-1 flex items-start justify-start p-8 pl-0">
               <div 
                 className="relative cursor-pointer group"
                 onMouseEnter={handleFeaturedHover}
