@@ -56,7 +56,7 @@ const Hero = () => {
               style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}
             >
               I'm a <span className="text-foreground font-semibold">Java Backend Developer</span> from
-              <br />Hyderabad, India.
+              <br />Markapur, Andhra Pradesh (open to relocate).
             </p>
 
             {/* Social Links - Bottom left aligned */}
