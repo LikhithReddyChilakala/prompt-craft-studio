@@ -101,133 +101,7 @@ const Hero = () => {
             style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
           >
             <div className="relative w-[500px] h-[500px] animate-float">
-              {/* Radiating lines effect - multi-color spectrum beams */}
-              <div 
-                className="absolute inset-[-100px] z-0"
-                style={{
-                  background: `
-                    conic-gradient(
-                      from 0deg at 50% 50%,
-                      transparent 0deg,
-                      rgba(57, 255, 20, 0.6) 5deg,
-                      transparent 10deg,
-                      transparent 20deg,
-                      rgba(220, 38, 38, 0.6) 25deg,
-                      transparent 30deg,
-                      transparent 40deg,
-                      rgba(255, 200, 0, 0.6) 45deg,
-                      transparent 50deg,
-                      transparent 60deg,
-                      rgba(57, 255, 20, 0.6) 65deg,
-                      transparent 70deg,
-                      transparent 80deg,
-                      rgba(255, 120, 0, 0.6) 85deg,
-                      transparent 90deg,
-                      transparent 100deg,
-                      rgba(220, 38, 38, 0.6) 105deg,
-                      transparent 110deg,
-                      transparent 120deg,
-                      rgba(57, 255, 20, 0.5) 125deg,
-                      transparent 130deg,
-                      transparent 140deg,
-                      rgba(255, 200, 0, 0.5) 145deg,
-                      transparent 150deg,
-                      transparent 160deg,
-                      rgba(255, 120, 0, 0.5) 165deg,
-                      transparent 170deg,
-                      transparent 180deg,
-                      rgba(220, 38, 38, 0.5) 185deg,
-                      transparent 190deg,
-                      transparent 200deg,
-                      rgba(57, 255, 20, 0.6) 205deg,
-                      transparent 210deg,
-                      transparent 220deg,
-                      rgba(255, 200, 0, 0.6) 225deg,
-                      transparent 230deg,
-                      transparent 240deg,
-                      rgba(220, 38, 38, 0.5) 245deg,
-                      transparent 250deg,
-                      transparent 260deg,
-                      rgba(255, 120, 0, 0.6) 265deg,
-                      transparent 270deg,
-                      transparent 280deg,
-                      rgba(57, 255, 20, 0.5) 285deg,
-                      transparent 290deg,
-                      transparent 300deg,
-                      rgba(220, 38, 38, 0.6) 305deg,
-                      transparent 310deg,
-                      transparent 320deg,
-                      rgba(255, 200, 0, 0.5) 325deg,
-                      transparent 330deg,
-                      transparent 340deg,
-                      rgba(57, 255, 20, 0.6) 345deg,
-                      transparent 350deg,
-                      transparent 360deg
-                    )
-                  `,
-                  filter: 'blur(2px)',
-                  animation: 'spectrum-rotate 30s linear infinite',
-                }}
-              />
-              
-              {/* Secondary glow layer for depth */}
-              <div 
-                className="absolute inset-[-80px] z-0"
-                style={{
-                  background: `
-                    conic-gradient(
-                      from 15deg at 50% 50%,
-                      transparent 0deg,
-                      rgba(57, 255, 20, 0.3) 8deg,
-                      transparent 16deg,
-                      transparent 35deg,
-                      rgba(220, 38, 38, 0.3) 43deg,
-                      transparent 51deg,
-                      transparent 70deg,
-                      rgba(255, 200, 0, 0.3) 78deg,
-                      transparent 86deg,
-                      transparent 105deg,
-                      rgba(255, 120, 0, 0.3) 113deg,
-                      transparent 121deg,
-                      transparent 140deg,
-                      rgba(57, 255, 20, 0.3) 148deg,
-                      transparent 156deg,
-                      transparent 175deg,
-                      rgba(220, 38, 38, 0.3) 183deg,
-                      transparent 191deg,
-                      transparent 210deg,
-                      rgba(255, 200, 0, 0.3) 218deg,
-                      transparent 226deg,
-                      transparent 245deg,
-                      rgba(255, 120, 0, 0.3) 253deg,
-                      transparent 261deg,
-                      transparent 280deg,
-                      rgba(57, 255, 20, 0.3) 288deg,
-                      transparent 296deg,
-                      transparent 315deg,
-                      rgba(220, 38, 38, 0.3) 323deg,
-                      transparent 331deg,
-                      transparent 350deg,
-                      rgba(255, 200, 0, 0.3) 358deg,
-                      transparent 360deg
-                    )
-                  `,
-                  filter: 'blur(8px)',
-                  animation: 'spectrum-rotate 25s linear infinite reverse',
-                }}
-              />
-              
-              {/* Central glow behind image */}
-              <div 
-                className="absolute inset-0 rounded-full z-0"
-                style={{
-                  background: 'radial-gradient(ellipse at center, rgba(57, 255, 20, 0.4) 0%, rgba(220, 38, 38, 0.2) 40%, transparent 70%)',
-                  filter: 'blur(30px)',
-                  animation: 'spectrum-pulse 3s ease-in-out infinite',
-                }}
-              />
-              
-              {/* The sketch image with multi-color neon drop shadows */}
+              {/* The sketch image with subtle neon drop shadow */}
               <img 
                 src={developerSketch} 
                 alt="Developer illustration - stylized sketch of a developer with laptop"
@@ -236,8 +110,6 @@ const Hero = () => {
                   filter: `
                     drop-shadow(0 0 10px rgba(57, 255, 20, 0.8))
                     drop-shadow(0 0 20px rgba(57, 255, 20, 0.5))
-                    drop-shadow(0 0 35px rgba(220, 38, 38, 0.4))
-                    drop-shadow(0 0 50px rgba(255, 200, 0, 0.3))
                   `,
                 }}
               />
