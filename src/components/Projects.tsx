@@ -103,7 +103,7 @@ const Projects = () => {
   const isFeaturedActive = activeIndex === 5;
 
   return (
-    <section id="projects" className="py-20 md:py-32 bg-[#121212] relative overflow-hidden">
+    <section id="projects" className="py-20 md:py-32 bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">

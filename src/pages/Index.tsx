@@ -5,6 +5,7 @@ import About from '@/components/About';
 import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
 import AmbientTracers from '@/components/AmbientTracers';
+import CosmicBackground from '@/components/CosmicBackground';
 
 const Index = () => {
   return (
@@ -22,7 +23,8 @@ const Index = () => {
         <link rel="canonical" href="https://likhithreddy.dev" />
       </Helmet>
 
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen relative">
+        <CosmicBackground />
         <AmbientTracers />
         <Navbar />
         <main>
