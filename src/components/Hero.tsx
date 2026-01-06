@@ -31,58 +31,37 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left: Content */}
-          <div className="max-w-2xl">
-            {/* Greeting */}
-            <div 
-              className="mb-8 opacity-0 animate-fade-in"
-              style={{ animationDelay: '0.2s' }}
-            >
-              <span className="text-zen-neon font-mono text-sm tracking-widest uppercase">
-                こんにちは, I am
-              </span>
-            </div>
-
-            {/* Name */}
+          <div className="max-w-xl">
+            {/* Name - Robb style compact */}
             <h1 
               className="opacity-0 animate-fade-in"
-              style={{ animationDelay: '0.4s' }}
+              style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
             >
-              <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-foreground leading-[0.9] mb-2">
+              <span className="block text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-foreground leading-tight">
                 Hi, my
               </span>
-              <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-foreground leading-[0.9]">
+              <span className="block text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-foreground leading-tight">
                 name is{' '}
-                <span className="text-zen-crimson relative">
-                  Likhith
-                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-zen-neon" />
-                </span>
+                <span className="text-zen-crimson">Likhith</span>
                 <span className="text-zen-neon">.</span>
               </span>
             </h1>
 
             {/* Description */}
             <p 
-              className="text-lg md:text-xl text-muted-foreground mt-8 mb-4 opacity-0 animate-fade-in max-w-lg"
-              style={{ animationDelay: '0.6s' }}
+              className="text-base md:text-lg text-muted-foreground mt-6 opacity-0 animate-fade-in max-w-md"
+              style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}
             >
               I'm a <span className="text-foreground font-medium">Java Backend Developer</span> from
               <br />Hyderabad, India.
             </p>
 
-            {/* Quote */}
-            <p 
-              className="text-sm text-zen-neon/80 font-mono mb-10 opacity-0 animate-fade-in"
-              style={{ animationDelay: '0.7s' }}
-            >
-              "Value creation is the only metric that matters"
-            </p>
-
             {/* Social Links */}
             <div
-              className="flex items-center gap-5 opacity-0 animate-fade-in"
-              style={{ animationDelay: '0.8s' }}
+              className="flex items-center gap-5 mt-8 opacity-0 animate-fade-in"
+              style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}
             >
               <a
                 href="https://github.com/LikhithReddyChilakala"
@@ -91,7 +70,7 @@ const Hero = () => {
                 className="group flex items-center gap-2 text-muted-foreground hover:text-zen-neon transition-colors duration-300"
                 aria-label="GitHub"
               >
-                <Github size={20} className="group-hover:scale-110 transition-transform" />
+                <Github size={18} className="group-hover:scale-110 transition-transform" />
                 <span className="text-sm hidden sm:inline">GitHub</span>
               </a>
               <a
@@ -101,7 +80,7 @@ const Hero = () => {
                 className="group flex items-center gap-2 text-muted-foreground hover:text-zen-neon transition-colors duration-300"
                 aria-label="LinkedIn"
               >
-                <Linkedin size={20} className="group-hover:scale-110 transition-transform" />
+                <Linkedin size={18} className="group-hover:scale-110 transition-transform" />
                 <span className="text-sm hidden sm:inline">LinkedIn</span>
               </a>
               <a
@@ -109,7 +88,7 @@ const Hero = () => {
                 className="group flex items-center gap-2 text-muted-foreground hover:text-zen-neon transition-colors duration-300"
                 aria-label="Email"
               >
-                <Mail size={20} className="group-hover:scale-110 transition-transform" />
+                <Mail size={18} className="group-hover:scale-110 transition-transform" />
                 <span className="text-sm hidden sm:inline">Email</span>
               </a>
             </div>
