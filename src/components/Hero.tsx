@@ -100,52 +100,61 @@ const Hero = () => {
             className="hidden lg:flex items-center justify-center opacity-0 animate-fade-in"
             style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
           >
-            <div className="relative w-[400px] h-[400px] animate-float">
-              {/* Spectrum glow layers - animated background halos */}
+            <div className="relative w-[400px] h-[500px] animate-float">
+              {/* Warm radiance glow layers - Yellow/Orange/Red/Pink */}
               <div 
-                className="absolute inset-0 rounded-full animate-spectrum-pulse"
+                className="absolute inset-0 rounded-full"
                 style={{
-                  background: 'radial-gradient(ellipse at center, rgba(57, 255, 20, 0.4) 0%, transparent 60%)',
+                  background: 'radial-gradient(ellipse at center, rgba(255, 215, 0, 0.5) 0%, transparent 55%)',
+                  filter: 'blur(35px)',
+                  animation: 'spectrum-pulse 2.5s ease-in-out infinite',
+                }}
+              />
+              <div 
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: 'radial-gradient(ellipse at 40% 50%, rgba(255, 140, 0, 0.45) 0%, transparent 50%)',
                   filter: 'blur(40px)',
-                  animation: 'spectrum-pulse 3s ease-in-out infinite, spectrum-rotate 8s linear infinite',
+                  animation: 'spectrum-pulse 3s ease-in-out infinite 0.3s, spectrum-rotate 10s linear infinite',
                 }}
               />
               <div 
                 className="absolute inset-0 rounded-full"
                 style={{
-                  background: 'radial-gradient(ellipse at 30% 40%, rgba(0, 255, 255, 0.35) 0%, transparent 50%)',
-                  filter: 'blur(35px)',
-                  animation: 'spectrum-pulse 3s ease-in-out infinite 0.5s, spectrum-rotate 10s linear infinite reverse',
+                  background: 'radial-gradient(ellipse at 60% 50%, rgba(255, 69, 0, 0.4) 0%, transparent 55%)',
+                  filter: 'blur(45px)',
+                  animation: 'spectrum-pulse 3.5s ease-in-out infinite 0.6s, spectrum-rotate 12s linear infinite reverse',
                 }}
               />
               <div 
                 className="absolute inset-0 rounded-full"
                 style={{
-                  background: 'radial-gradient(ellipse at 70% 60%, rgba(255, 20, 147, 0.35) 0%, transparent 50%)',
-                  filter: 'blur(35px)',
-                  animation: 'spectrum-pulse 3s ease-in-out infinite 1s, spectrum-rotate 12s linear infinite',
+                  background: 'radial-gradient(ellipse at 50% 60%, rgba(220, 20, 60, 0.35) 0%, transparent 60%)',
+                  filter: 'blur(50px)',
+                  animation: 'spectrum-pulse 4s ease-in-out infinite 0.9s, spectrum-rotate 14s linear infinite',
                 }}
               />
               <div 
                 className="absolute inset-0 rounded-full"
                 style={{
-                  background: 'radial-gradient(ellipse at 50% 30%, rgba(255, 255, 0, 0.3) 0%, transparent 45%)',
-                  filter: 'blur(30px)',
-                  animation: 'spectrum-pulse 3s ease-in-out infinite 1.5s, spectrum-rotate 9s linear infinite reverse',
+                  background: 'radial-gradient(ellipse at 50% 40%, rgba(255, 105, 180, 0.3) 0%, transparent 50%)',
+                  filter: 'blur(45px)',
+                  animation: 'spectrum-pulse 3s ease-in-out infinite 1.2s, spectrum-rotate 11s linear infinite reverse',
                 }}
               />
               
-              {/* The sketch image with multi-color drop shadows */}
+              {/* The sketch image with warm drop shadows */}
               <img 
                 src={developerSketch} 
                 alt="Developer illustration - stylized sketch of a developer with laptop"
                 className="relative z-10 w-full h-full object-contain"
                 style={{
                   filter: `
-                    drop-shadow(0 0 15px rgba(57, 255, 20, 0.6))
-                    drop-shadow(0 0 30px rgba(0, 255, 255, 0.4))
-                    drop-shadow(0 0 45px rgba(255, 20, 147, 0.3))
-                    drop-shadow(0 0 60px rgba(255, 255, 0, 0.2))
+                    drop-shadow(0 0 12px rgba(255, 215, 0, 0.7))
+                    drop-shadow(0 0 25px rgba(255, 140, 0, 0.5))
+                    drop-shadow(0 0 40px rgba(255, 69, 0, 0.4))
+                    drop-shadow(0 0 55px rgba(220, 20, 60, 0.3))
+                    drop-shadow(0 0 70px rgba(255, 105, 180, 0.2))
                   `,
                 }}
               />
