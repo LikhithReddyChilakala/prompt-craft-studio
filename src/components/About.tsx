@@ -7,10 +7,12 @@ const skills = [
   { name: 'MySQL', size: 'md', position: { top: '45%', left: '5%' } },
   { name: 'NoSQL', size: 'sm', position: { top: '35%', left: '60%' } },
   { name: 'DSA', size: 'lg', position: { top: '55%', left: '40%' } },
-  { name: 'System Design', size: 'md', position: { top: '70%', left: '15%' } },
+  { name: 'Low Level Design', size: 'md', position: { top: '70%', left: '15%' } },
   { name: 'HTML/CSS', size: 'sm', position: { top: '75%', left: '55%' } },
   { name: 'Spring Boot', size: 'md', position: { top: '20%', left: '5%' } },
   { name: 'REST APIs', size: 'sm', position: { top: '60%', left: '65%' } },
+  { name: 'OOP', size: 'md', position: { top: '85%', left: '35%' } },
+  { name: 'Concurrency', size: 'sm', position: { top: '10%', left: '35%' } },
 ];
 
 const timeline = [
