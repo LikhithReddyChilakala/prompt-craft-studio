@@ -4,6 +4,7 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
+import CursorParticles from '@/components/CursorParticles';
 
 const Index = () => {
   return (
@@ -22,6 +23,7 @@ const Index = () => {
       </Helmet>
 
       <div className="min-h-screen bg-background">
+        <CursorParticles />
         <Navbar />
         <main>
           <Hero />
