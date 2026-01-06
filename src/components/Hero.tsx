@@ -27,23 +27,23 @@ const Hero = () => {
         <div className="absolute bottom-0 left-1/3 w-px h-[30%] bg-gradient-to-t from-primary/40 via-primary/20 to-transparent" />
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[70vh]">
-          {/* Left: Content - Left aligned like Robb */}
-          <div className="flex flex-col justify-center">
-            {/* Name - Larger, bolder */}
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[70vh]">
+          {/* Left: Content - Centered more */}
+          <div className="flex flex-col justify-center lg:pl-12">
+            {/* Name - Reduced size */}
             <h1 
               className="opacity-0 animate-fade-in"
               style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
             >
-              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-foreground leading-[1.1] mb-1">
+              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-serif font-bold text-foreground leading-[1.1] mb-1">
                 Hi, my
               </span>
-              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-foreground leading-[1.1]">
+              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-serif font-bold text-foreground leading-[1.1]">
                 name is{' '}
                 <span className="text-primary relative inline-block">
                   Likhith
-                  <span className="absolute -bottom-1 left-0 w-full h-1 bg-zen-neon" />
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-zen-neon" />
                 </span>
                 <span className="text-zen-neon">.</span>
               </span>
