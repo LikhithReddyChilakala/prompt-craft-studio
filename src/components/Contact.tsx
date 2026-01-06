@@ -47,15 +47,16 @@ const Contact = () => {
   return (
     <section 
       id="contact" 
-      className="py-20 md:py-32 relative"
-      style={{
-        background: `
-          radial-gradient(circle at 1px 1px, hsl(var(--muted-foreground) / 0.15) 1px, transparent 0)
-        `,
-        backgroundSize: '24px 24px',
-        backgroundColor: 'hsl(var(--background))',
-      }}
+      className="py-20 md:py-32 relative bg-transparent"
     >
+      {/* Dotted overlay on transparent background */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(circle at 1px 1px, hsl(var(--muted-foreground) / 0.1) 1px, transparent 0)`,
+          backgroundSize: '24px 24px',
+        }}
+      />
       {/* Top Border */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
