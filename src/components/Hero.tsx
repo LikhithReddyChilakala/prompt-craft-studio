@@ -1,5 +1,5 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
-import developerSketch from '@/assets/developer-sketch.png';
+import SpectralWaveform from './SpectralWaveform';
 
 const Hero = () => {
   return (
@@ -95,18 +95,12 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right: Developer Sketch Illustration */}
+          {/* Right: Spectral Waveform Visualization */}
           <div 
             className="hidden lg:flex items-center justify-center opacity-0 animate-fade-in"
             style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
           >
-            <div className="relative w-[400px] h-[400px] animate-float">
-              <img 
-                src={developerSketch} 
-                alt="Developer illustration - stylized sketch of a developer with laptop"
-                className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(57,255,20,0.3)]"
-              />
-            </div>
+            <SpectralWaveform />
           </div>
         </div>
       </div>
