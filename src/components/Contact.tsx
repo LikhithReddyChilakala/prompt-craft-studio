@@ -1,19 +1,68 @@
-import { Mail, Linkedin, Github, MapPin, Send } from 'lucide-react';
+import { Mail, Linkedin, Github, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Contact = () => {
+  const contactCards = [
+    {
+      id: 'email',
+      label: 'Email',
+      icon: Mail,
+      value: 'likhithreddy2423@gmail.com',
+      href: 'mailto:likhithreddy2423@gmail.com',
+      description: 'Direct communication channel',
+      borderColor: 'border-zen-neon/50',
+      glowColor: 'shadow-zen-neon/20',
+      iconColor: 'text-zen-neon',
+      badgeBg: 'bg-zen-neon/10',
+      badgeText: 'text-zen-neon',
+    },
+    {
+      id: 'linkedin',
+      label: 'LinkedIn',
+      icon: Linkedin,
+      value: 'Likhith Reddy',
+      href: 'https://www.linkedin.com/in/likhith-reddy-chilakala-027497231/',
+      description: 'Professional network presence',
+      borderColor: 'border-orange-500/50',
+      glowColor: 'shadow-orange-500/20',
+      iconColor: 'text-orange-500',
+      badgeBg: 'bg-orange-500/10',
+      badgeText: 'text-orange-500',
+    },
+    {
+      id: 'github',
+      label: 'GitHub',
+      icon: Github,
+      value: 'LikhithReddyChilakala',
+      href: 'https://github.com/LikhithReddyChilakala',
+      description: 'Open source contributions',
+      borderColor: 'border-zen-red/50',
+      glowColor: 'shadow-zen-red/20',
+      iconColor: 'text-zen-red',
+      badgeBg: 'bg-zen-red/10',
+      badgeText: 'text-zen-red',
+    },
+  ];
+
   return (
-    <section id="contact" className="py-20 md:py-32 relative">
+    <section 
+      id="contact" 
+      className="py-20 md:py-32 relative"
+      style={{
+        background: `
+          radial-gradient(circle at 1px 1px, hsl(var(--muted-foreground) / 0.15) 1px, transparent 0)
+        `,
+        backgroundSize: '24px 24px',
+        backgroundColor: 'hsl(var(--background))',
+      }}
+    >
       {/* Top Border */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-xs tracking-widest uppercase text-primary mb-4 block">
-            Contact
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif italic font-bold text-foreground mb-4">
             Let's Connect
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
@@ -22,79 +71,93 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Contact Info */}
-            <div className="space-y-6">
-              <h3 className="text-xl font-serif font-medium text-foreground mb-6">
-                Get in Touch
-              </h3>
-
+        {/* 2-Column Grid Layout */}
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+          {/* Left Column: Stacked Contact Cards */}
+          <div className="flex flex-col gap-4">
+            {contactCards.map((card) => (
               <a
-                href="mailto:likhithreddy2423@gmail.com"
-                className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-zen-neon/50 transition-colors group"
+                key={card.id}
+                href={card.href}
+                target={card.id !== 'email' ? '_blank' : undefined}
+                rel={card.id !== 'email' ? 'noopener noreferrer' : undefined}
+                className={`
+                  relative p-6 rounded-xl
+                  bg-card/80 backdrop-blur-sm
+                  border ${card.borderColor}
+                  shadow-lg ${card.glowColor}
+                  hover:scale-[1.02] transition-all duration-300
+                  group
+                `}
               >
-                <div className="p-3 bg-secondary rounded-lg group-hover:bg-zen-neon/10 transition-colors">
-                  <Mail className="w-5 h-5 text-zen-neon" />
+                {/* Pill Badge - Top Right */}
+                <div className={`absolute top-4 right-4 px-3 py-1 rounded-full ${card.badgeBg} ${card.badgeText} text-xs font-medium`}>
+                  {card.label}
                 </div>
-                <div>
-                  <p className="text-xs text-muted-foreground uppercase tracking-wide">Email</p>
-                  <p className="text-foreground font-medium">likhithreddy2423@gmail.com</p>
-                </div>
-              </a>
 
-              <a
-                href="https://www.linkedin.com/in/likhith-reddy-chilakala-027497231/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors group"
-              >
-                <div className="p-3 bg-secondary rounded-lg group-hover:bg-primary/10 transition-colors">
-                  <Linkedin className="w-5 h-5 text-primary" />
+                {/* Icon - Top Left */}
+                <div className={`mb-4 ${card.iconColor}`}>
+                  <card.icon className="w-8 h-8" strokeWidth={1.5} />
                 </div>
-                <div>
-                  <p className="text-xs text-muted-foreground uppercase tracking-wide">LinkedIn</p>
-                  <p className="text-foreground font-medium">Likhith Reddy Chilakala</p>
-                </div>
-              </a>
 
-              <a
-                href="https://github.com/LikhithReddyChilakala"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors group"
-              >
-                <div className="p-3 bg-secondary rounded-lg group-hover:bg-primary/10 transition-colors">
-                  <Github className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground uppercase tracking-wide">GitHub</p>
-                  <p className="text-foreground font-medium">LikhithReddyChilakala</p>
-                </div>
-              </a>
+                {/* Main Value Text */}
+                <p className="text-xl md:text-2xl font-bold text-foreground mb-2 break-all">
+                  {card.value}
+                </p>
 
-              <div className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg">
-                <div className="p-3 bg-secondary rounded-lg">
-                  <MapPin className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground uppercase tracking-wide">Location</p>
-                  <p className="text-foreground font-medium">Tamil Nadu, India</p>
-                </div>
+                {/* Description */}
+                <p className="text-sm text-muted-foreground">
+                  {card.description}
+                </p>
+              </a>
+            ))}
+          </div>
+
+          {/* Right Column: Large Form Card */}
+          <div className="h-full">
+            <div className="h-full p-8 rounded-xl bg-card/80 backdrop-blur-sm border border-primary/30 shadow-lg shadow-primary/10 flex flex-col">
+              {/* Badge */}
+              <div className="flex justify-end mb-4">
+                <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                  Quick Message
+                </span>
               </div>
-            </div>
 
-            {/* Quick Message */}
-            <div className="p-8 bg-card border border-border rounded-lg">
-              <h3 className="text-xl font-serif font-medium text-foreground mb-6">
-                Quick Message
+              {/* Icon */}
+              <div className="mb-4 text-primary">
+                <Send className="w-8 h-8" strokeWidth={1.5} />
+              </div>
+
+              {/* Title */}
+              <h3 className="text-2xl font-bold text-foreground mb-2">
+                Send a Message
               </h3>
+
+              {/* Description */}
               <p className="text-muted-foreground mb-6">
                 Interested in working together? Drop me a message and I'll get back to you as soon as possible.
               </p>
+
+              {/* Bullet Points */}
+              <ul className="space-y-3 mb-8 flex-grow">
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <span className="text-primary mt-1">•</span>
+                  Available for full-time backend development roles
+                </li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <span className="text-primary mt-1">•</span>
+                  Open to freelance and contract opportunities
+                </li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <span className="text-primary mt-1">•</span>
+                  Response time typically within 24 hours
+                </li>
+              </ul>
+
+              {/* CTA Button */}
               <Button
                 size="lg"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
                 asChild
               >
                 <a
@@ -107,7 +170,7 @@ const Contact = () => {
               </Button>
 
               {/* Japanese Quote */}
-              <div className="mt-8 pt-6 border-t border-border text-center">
+              <div className="mt-6 pt-6 border-t border-border text-center">
                 <p className="text-2xl font-serif text-zen-neon mb-2">一期一会</p>
                 <p className="text-xs text-muted-foreground italic">
                   "One time, one meeting" — treasure every encounter
