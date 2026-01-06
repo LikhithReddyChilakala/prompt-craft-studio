@@ -284,42 +284,42 @@ const Projects = () => {
               </div>
             </div>
 
-            {/* BOTTOM-RIGHT QUADRANT - Tata Elxsi Triangle */}
-            <div className="flex-1 flex items-end justify-end p-8">
+            {/* BOTTOM-RIGHT QUADRANT - Tata Elxsi Inverted Triangle */}
+            <div className="flex-1 flex items-start justify-end p-8">
               <div 
                 className="relative cursor-pointer group"
                 onMouseEnter={handleFeaturedHover}
                 onMouseLeave={handleNodeLeave}
               >
-                {/* Outer Glow */}
+                {/* Outer Glow - Inverted */}
                 <div 
                   className={`absolute inset-0 transition-all duration-500 ${isFeaturedActive ? 'opacity-100' : 'opacity-60'}`}
                   style={{
-                    clipPath: 'polygon(50% 0%, 100% 100%, 0% 100%)',
-                    background: 'radial-gradient(circle at 50% 70%, rgba(255, 165, 0, 0.4) 0%, transparent 70%)',
+                    clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%)',
+                    background: 'radial-gradient(circle at 50% 30%, rgba(255, 165, 0, 0.4) 0%, transparent 70%)',
                     transform: 'scale(1.3)',
                     filter: 'blur(20px)',
                   }}
                 />
                 
-                {/* Main Triangle */}
+                {/* Main Inverted Triangle */}
                 <div
-                  className={`relative w-48 h-44 md:w-56 md:h-52 flex flex-col items-center justify-center text-center p-6 transition-all duration-500 ${
+                  className={`relative w-48 h-44 md:w-56 md:h-52 flex flex-col items-center justify-start text-center pt-6 px-6 transition-all duration-500 ${
                     isFeaturedActive ? 'scale-105' : 'scale-100'
                   }`}
                   style={{
-                    clipPath: 'polygon(50% 0%, 100% 100%, 0% 100%)',
-                    background: `linear-gradient(180deg, rgba(255, 165, 0, 0.15) 0%, rgba(255, 215, 0, 0.1) 50%, rgba(18, 18, 18, 0.95) 100%)`,
+                    clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%)',
+                    background: `linear-gradient(180deg, rgba(255, 165, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 40%, rgba(18, 18, 18, 0.95) 100%)`,
                   }}
                 >
-                  {/* Triangle Border */}
+                  {/* Triangle Border - Inverted */}
                   <svg 
                     className="absolute inset-0 w-full h-full pointer-events-none"
                     viewBox="0 0 100 87"
                     preserveAspectRatio="none"
                   >
                     <defs>
-                      <linearGradient id="triangleGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                      <linearGradient id="triangleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" stopColor="#FFA500" />
                         <stop offset="100%" stopColor="#FFD700" />
                       </linearGradient>
@@ -332,7 +332,7 @@ const Projects = () => {
                       </filter>
                     </defs>
                     <polygon 
-                      points="50,0 100,87 0,87" 
+                      points="0,0 100,0 50,87" 
                       fill="none" 
                       stroke="url(#triangleGradient)" 
                       strokeWidth="1.5"
@@ -340,9 +340,9 @@ const Projects = () => {
                     />
                   </svg>
                   
-                  {/* Company Badge */}
+                  {/* Company Badge - Positioned in upper wide section */}
                   <div 
-                    className="absolute top-6 px-2 py-0.5 rounded-full text-[9px] font-medium tracking-wider uppercase"
+                    className="px-2 py-0.5 rounded-full text-[9px] font-medium tracking-wider uppercase mb-2"
                     style={{
                       background: 'linear-gradient(135deg, #FFA500, #FFD700)',
                       color: '#121212',
@@ -352,9 +352,9 @@ const Projects = () => {
                     {featuredProject.company}
                   </div>
                   
-                  {/* Title Only */}
+                  {/* Title - In upper wide section */}
                   <h3 
-                    className="font-serif font-bold text-xs md:text-sm text-foreground leading-tight mt-6 px-3"
+                    className="font-serif font-bold text-xs md:text-sm text-foreground leading-tight px-4"
                     style={{
                       textShadow: isFeaturedActive ? '0 0 20px rgba(255, 165, 0, 0.5)' : 'none',
                     }}
@@ -363,18 +363,18 @@ const Projects = () => {
                   </h3>
                 </div>
 
-                {/* Pulsing Animation */}
+                {/* Pulsing Animation - Inverted */}
                 <div 
                   className={`absolute inset-0 pointer-events-none transition-opacity duration-300 ${isFeaturedActive ? 'opacity-100' : 'opacity-50'}`}
                   style={{
-                    clipPath: 'polygon(50% 0%, 100% 100%, 0% 100%)',
+                    clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%)',
                     animation: 'pulse 2s ease-in-out infinite',
                   }}
                 >
                   <div 
                     className="w-full h-full"
                     style={{
-                      background: 'linear-gradient(180deg, rgba(255, 165, 0, 0.1) 0%, transparent 50%)',
+                      background: 'linear-gradient(180deg, rgba(255, 165, 0, 0.15) 0%, transparent 60%)',
                     }}
                   />
                 </div>
