@@ -5,12 +5,12 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 md:py-32 relative">
       {/* Top Border */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-zen-neon/30 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-xs tracking-widest uppercase text-zen-neon font-mono mb-4 block">
+          <span className="text-xs tracking-widest uppercase text-primary mb-4 block">
             Contact
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4">
@@ -32,13 +32,13 @@ const Contact = () => {
 
               <a
                 href="mailto:likhithreddy2423@gmail.com"
-                className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-zen-neon/50 transition-colors group"
+                className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors group"
               >
-                <div className="p-3 bg-secondary rounded-lg group-hover:bg-zen-neon/10 transition-colors">
-                  <Mail className="w-5 h-5 text-zen-neon" />
+                <div className="p-3 bg-secondary rounded-lg group-hover:bg-primary/10 transition-colors">
+                  <Mail className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground uppercase tracking-wide font-mono">Email</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wide">Email</p>
                   <p className="text-foreground font-medium">likhithreddy2423@gmail.com</p>
                 </div>
               </a>
@@ -47,13 +47,13 @@ const Contact = () => {
                 href="https://www.linkedin.com/in/likhith-reddy-chilakala-027497231/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-zen-neon/50 transition-colors group"
+                className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors group"
               >
-                <div className="p-3 bg-secondary rounded-lg group-hover:bg-zen-neon/10 transition-colors">
-                  <Linkedin className="w-5 h-5 text-zen-neon" />
+                <div className="p-3 bg-secondary rounded-lg group-hover:bg-primary/10 transition-colors">
+                  <Linkedin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground uppercase tracking-wide font-mono">LinkedIn</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wide">LinkedIn</p>
                   <p className="text-foreground font-medium">Likhith Reddy Chilakala</p>
                 </div>
               </a>
@@ -62,42 +62,39 @@ const Contact = () => {
                 href="https://github.com/LikhithReddyChilakala"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-zen-neon/50 transition-colors group"
+                className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors group"
               >
-                <div className="p-3 bg-secondary rounded-lg group-hover:bg-zen-neon/10 transition-colors">
-                  <Github className="w-5 h-5 text-zen-neon" />
+                <div className="p-3 bg-secondary rounded-lg group-hover:bg-primary/10 transition-colors">
+                  <Github className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground uppercase tracking-wide font-mono">GitHub</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wide">GitHub</p>
                   <p className="text-foreground font-medium">LikhithReddyChilakala</p>
                 </div>
               </a>
 
               <div className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg">
                 <div className="p-3 bg-secondary rounded-lg">
-                  <MapPin className="w-5 h-5 text-zen-neon" />
+                  <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground uppercase tracking-wide font-mono">Location</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wide">Location</p>
                   <p className="text-foreground font-medium">Tamil Nadu, India</p>
                 </div>
               </div>
             </div>
 
             {/* Quick Message */}
-            <div className="p-8 bg-card border border-border rounded-lg relative overflow-hidden">
-              {/* Neon glow effect */}
-              <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-zen-neon/10 rounded-full blur-3xl" />
-              
-              <h3 className="text-xl font-serif font-medium text-foreground mb-6 relative">
+            <div className="p-8 bg-card border border-border rounded-lg">
+              <h3 className="text-xl font-serif font-medium text-foreground mb-6">
                 Quick Message
               </h3>
-              <p className="text-muted-foreground mb-6 relative">
+              <p className="text-muted-foreground mb-6">
                 Interested in working together? Drop me a message and I'll get back to you as soon as possible.
               </p>
               <Button
                 size="lg"
-                className="w-full bg-zen-neon hover:bg-zen-neon/90 text-background font-medium relative"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
                 asChild
               >
                 <a
@@ -110,8 +107,8 @@ const Contact = () => {
               </Button>
 
               {/* Japanese Quote */}
-              <div className="mt-8 pt-6 border-t border-border text-center relative">
-                <p className="text-2xl font-serif text-zen-neon mb-2">一期一会</p>
+              <div className="mt-8 pt-6 border-t border-border text-center">
+                <p className="text-2xl font-serif text-primary mb-2">一期一会</p>
                 <p className="text-xs text-muted-foreground italic">
                   "One time, one meeting" — treasure every encounter
                 </p>

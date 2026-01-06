@@ -1,4 +1,4 @@
-import { Github, Folder } from 'lucide-react';
+import { ExternalLink, Github, Folder } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const projects = [
@@ -49,7 +49,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 md:py-32 bg-card/30 relative">
+    <section id="projects" className="py-20 md:py-32 bg-card/30">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.02]">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[400px] font-serif text-foreground select-none">
@@ -60,7 +60,7 @@ const Projects = () => {
       <div className="container mx-auto px-6 relative">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-xs tracking-widest uppercase text-zen-neon font-mono mb-4 block">
+          <span className="text-xs tracking-widest uppercase text-primary mb-4 block">
             Portfolio
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4">
@@ -75,16 +75,13 @@ const Projects = () => {
         {projects.filter(p => p.featured).map((project) => (
           <div
             key={project.title}
-            className="mb-12 p-8 bg-card border border-zen-neon/30 rounded-lg hover:border-zen-neon/60 transition-all duration-300 max-w-4xl mx-auto relative overflow-hidden"
+            className="mb-12 p-8 bg-card border border-border rounded-lg hover:border-primary/50 transition-all duration-300 zen-glow max-w-4xl mx-auto"
           >
-            {/* Neon glow effect */}
-            <div className="absolute -top-20 -right-20 w-40 h-40 bg-zen-neon/10 rounded-full blur-3xl" />
-            
-            <div className="flex items-start justify-between mb-4 relative">
-              <span className="text-xs tracking-widest uppercase text-zen-neon font-mono">
+            <div className="flex items-start justify-between mb-4">
+              <span className="text-xs tracking-widest uppercase text-accent">
                 Featured • {project.type}
               </span>
-              <Folder className="w-8 h-8 text-zen-neon" />
+              <Folder className="w-8 h-8 text-primary" />
             </div>
             <h3 className="text-2xl font-serif font-bold text-foreground mb-3">
               {project.title}
@@ -96,7 +93,7 @@ const Projects = () => {
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 text-xs font-medium bg-zen-neon/10 text-zen-neon border border-zen-neon/20 rounded-full"
+                  className="px-3 py-1 text-xs font-medium bg-secondary text-muted-foreground rounded-full"
                 >
                   {tag}
                 </span>
@@ -110,13 +107,13 @@ const Projects = () => {
           {projects.filter(p => !p.featured).map((project) => (
             <div
               key={project.title}
-              className="group p-6 bg-card border border-border rounded-lg hover:border-zen-neon/50 hover:-translate-y-1 transition-all duration-300"
+              className="group p-6 bg-card border border-border rounded-lg hover:border-primary/50 hover:-translate-y-1 transition-all duration-300"
             >
               <div className="flex items-start justify-between mb-4">
-                <Folder className="w-6 h-6 text-zen-neon" />
-                <span className="text-xs text-muted-foreground font-mono">{project.type}</span>
+                <Folder className="w-6 h-6 text-primary" />
+                <span className="text-xs text-muted-foreground">{project.type}</span>
               </div>
-              <h3 className="text-lg font-serif font-medium text-foreground mb-2 group-hover:text-zen-neon transition-colors">
+              <h3 className="text-lg font-serif font-medium text-foreground mb-2 group-hover:text-primary transition-colors">
                 {project.title}
               </h3>
               <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
@@ -140,7 +137,7 @@ const Projects = () => {
         <div className="text-center mt-12">
           <Button
             variant="outline"
-            className="border-zen-neon/50 text-zen-neon hover:bg-zen-neon/10 hover:border-zen-neon"
+            className="border-border text-foreground hover:bg-secondary"
             asChild
           >
             <a
